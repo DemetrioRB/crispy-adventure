@@ -1,4 +1,4 @@
-﻿import uuid #used to generate order ID on sales receipt
+import uuid #used to generate order ID on sales receipt
 from datetime import datetime #generate current date on sales receipt
 import time #used to delay program exit for 3 seconds
 from collections import defaultdict #used to group products by category in inventory
@@ -193,8 +193,8 @@ class POS:
     def _initialize_inventory(self): #function to initialize inventory with products, price and stock available
         products = {
 
-            40: Product(50, "Notebook", 500.00, 8, "General"),
-            45: Product(55, "Unmaster Lock Padlock", 400.00, 5, "General"),
+            40: Product(40, "Notebook", 500.00, 8, "General"),
+            45: Product(45, "Unmaster Lock Padlock", 400.00, 5, "General"),
             101: Product(101, "Rice (5lb)", 480.00, 25, "Groceries"),
             102: Product(102, "Flour (5lb)", 430.00, 28, "Groceries"),
             103: Product(103, "Bread", 600.00, 30, "Groceries"),
@@ -408,7 +408,6 @@ class POS:
                     tax = subtotal * self.tax_rate
                     discount = self.cart.discount_amount(subtotal)
                     total = (subtotal + tax) - discount
-                    print(f"Removed {quantity} of {product.name} from cart.")
                     subtotal, tax, discount, total = self.recalculate_total()
                     print(f"Updated Cart Total: ${total:,.2f}")
                     time.sleep(1.5)
